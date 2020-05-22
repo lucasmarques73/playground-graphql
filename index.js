@@ -6,12 +6,12 @@ const {
 const tags = [{
         id: "1",
         name: "tech",
-        posts: ["1","3","4","5","6","7"]
+        posts: ["1", "3", "4", "5", "6", "7"]
     },
     {
         id: "2",
         name: "personal",
-        posts: ["2","4","6","8"]
+        posts: ["2", "4", "6", "8"]
     }
 ]
 
@@ -33,7 +33,7 @@ const posts = [{
     {
         id: "4",
         title: 'Jurassic Park',
-        tags: ["1","2"],
+        tags: ["1", "2"],
     },
     {
         id: "5",
@@ -43,7 +43,7 @@ const posts = [{
     {
         id: "6",
         title: 'Jurassic Park',
-        tags: ["1","2"],
+        tags: ["1", "2"],
     },
     {
         id: "7",
@@ -95,7 +95,9 @@ const server = new ApolloServer({
     resolvers
 });
 
-server.listen().then(({
+server.listen({
+    port: process.env.PORT || 4000
+}).then(({
     url
 }) => {
     console.log(`Server ready at ${url}`);
