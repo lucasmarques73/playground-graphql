@@ -75,6 +75,10 @@ const typeDefs = gql `
     posts: [Post]
     tags: [Tag]
   }
+
+  type Mutation {
+  addPost(title: String): Post
+}
 `;
 
 const resolvers = {
@@ -88,6 +92,19 @@ const resolvers = {
         posts: () => posts,
         tags: () => tags
     },
+    Mutation: {
+        addPost: (_, data) => {
+
+            
+            const newPost = {
+                id: posts.length + 1,
+                ...data
+            }
+            posts.push(newPost)
+
+            return newPost
+        }
+    }
 };
 
 const server = new ApolloServer({
